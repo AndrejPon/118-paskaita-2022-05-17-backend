@@ -29,4 +29,33 @@ router.post('/register', validation(userSchema), async (req, res) => {
   }
 });
 
+router.post('/login', validation(userSchema), async (req, res) => {
+  try {
+    const con = await mysql.createConnection(mysqlConfig);
+    const [data] = await con.execute(`
+        SELECT * FROM users
+        WHERE email = (${mysql.escape(req.body.email)})
+        `);
+    await con.end();
+
+    if (data.length !== 1) {
+      return res.status(400).send({ error: 'Email or password incorrect' });
+    }
+    const checkPassword = bcrypt.compareSync(
+      req.body.password,
+      data[0].password
+    );
+
+    if (!checkPassword) {
+      return res.status(400).send({ error: 'Email or password incorrect' });
+    }
+
+    const token = jwt.sign({ userId: data[0].id }, jwtSecret);
+    return res.send({ msg: 'Login successful' });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({ error: 'Server issue. Please try again.' });
+  }
+});
+
 module.exports = router;
