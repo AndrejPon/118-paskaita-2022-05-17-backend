@@ -51,7 +51,7 @@ router.post('/login', validation(userSchema), async (req, res) => {
     }
 
     const token = jwt.sign({ userId: data[0].id }, jwtSecret);
-    return res.send({ msg: 'Login successful' });
+    return res.send({ msg: 'Login successful', token });
   } catch (error) {
     console.log(error);
     return res.status(500).send({ error: 'Server issue. Please try again.' });

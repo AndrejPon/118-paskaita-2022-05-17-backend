@@ -15,3 +15,18 @@ Content-Type: application/json
     "email": "jim@mail.com",
     "password": "jim123" 
 }
+
+###
+
+POST http://localhost:8000/v1/content/tasks
+Content-Type: application/json
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY1MjgxNTI3MH0.aDZwVzFJraEmWmQcPLEYb-AJK2YlRaa1wpzrV1MqCII
+
+{
+    "description": "Buy bread"
+}
+
+###
+
+GET http://localhost:8000/v1/content/tasks
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY1MjgxNjY1OH0.Wh0MaWGMsSz7G3vCcn9O55sr-fEpRqluT-eg7eo-1Ls
