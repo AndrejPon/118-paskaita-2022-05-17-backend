@@ -9,10 +9,12 @@ router.post('/tasks', isLoggedIn, async (req, res) => {
   try {
     const con = await mysql.createConnection(mysqlConfig);
     const [data] = await con.execute(
-      `INSERT INTO tasks (description) VALUES (${mysql.escape(
+      `INSERT INTO tasks (user_id, description) 
+      VALUES (${mysql.escape(req.body.user_id)}, ${mysql.escape(
         req.body.description
       )})`
     );
+
     await con.end();
     return res.send({ msg: 'New item added' });
   } catch (error) {
@@ -24,8 +26,13 @@ router.post('/tasks', isLoggedIn, async (req, res) => {
 router.get('/tasks', isLoggedIn, async (req, res) => {
   try {
     const con = await mysql.createConnection(mysqlConfig);
-    const [data] = await con.execute(`SELECT * FROM tasks`);
+    const [data] = await con.execute(
+      `SELECT id, description AS task FROM tasks
+      WHERE user_id = (${mysql.escape(req.user.id)})
+      `
+    );
     await con.end();
+    return res.send(data);
   } catch (error) {
     console.log(error);
     return res.status(500).send({ error: 'Server issue. Please try again.' });

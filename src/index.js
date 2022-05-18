@@ -1,4 +1,3 @@
-console.log('Veikia');
 const express = require('express');
 const cors = require('cors');
 const authRoutes = require('./routes/v1/auth');

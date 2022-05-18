@@ -2,8 +2,8 @@ POST http://localhost:8000/v1/auth/register
 Content-Type: application/json
 
 {
-    "email": "jim@mail.com",
-    "password": "jim123" 
+    "email": "peter@mail.com",
+    "password": "peter123" 
 }
 
 ###
@@ -12,21 +12,26 @@ POST http://localhost:8000/v1/auth/login
 Content-Type: application/json
 
 {
-    "email": "jim@mail.com",
-    "password": "jim123" 
+    "email": "peter@mail.com",
+    "password": "peter123" 
 }
 
 ###
 
 POST http://localhost:8000/v1/content/tasks
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjUyOTA3OTUwfQ.63iDHNpHveG70Q8bAq_YCbKHQKRR1i78w5OfGrlCtiQ
 Content-Type: application/json
-Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY1MjgxNTI3MH0.aDZwVzFJraEmWmQcPLEYb-AJK2YlRaa1wpzrV1MqCII
 
 {
-    "description": "Buy bread"
+    "user_id": 5,
+    "description": "Go sports"
 }
 
 ###
 
 GET http://localhost:8000/v1/content/tasks
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY1MjgxNjY1OH0.Wh0MaWGMsSz7G3vCcn9O55sr-fEpRqluT-eg7eo-1Ls
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjUyOTA3OTUwfQ.63iDHNpHveG70Q8bAq_YCbKHQKRR1i78w5OfGrlCtiQ
+
+###
+GET http://localhost:8000/v1/auth/login
+Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjUyODYwNDk0fQ.zaiKR26tP-sTSx042Z-Nnk2SXXZWUfne1uFziFWnPH0
