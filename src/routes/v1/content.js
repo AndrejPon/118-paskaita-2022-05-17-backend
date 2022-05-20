@@ -5,7 +5,7 @@ const { mysqlConfig } = require('../../config');
 
 const router = express.Router();
 
-router.post('/tasks', isLoggedIn, async (req, res) => {
+router.post('/', isLoggedIn, async (req, res) => {
   try {
     const con = await mysql.createConnection(mysqlConfig);
     const [data] = await con.execute(
@@ -23,7 +23,7 @@ router.post('/tasks', isLoggedIn, async (req, res) => {
   }
 });
 
-router.get('/tasks', isLoggedIn, async (req, res) => {
+router.get('/', isLoggedIn, async (req, res) => {
   try {
     const con = await mysql.createConnection(mysqlConfig);
     const [data] = await con.execute(
