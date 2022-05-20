@@ -18,18 +18,17 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:8000/v1/content/tasks
+POST http://localhost:8000/v1/content
 Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjUyOTA3OTUwfQ.63iDHNpHveG70Q8bAq_YCbKHQKRR1i78w5OfGrlCtiQ
 Content-Type: application/json
 
 {
-    "user_id": 5,
-    "description": "Go sports"
+        "description": "Buy ball"
 }
 
 ###
 
-GET http://localhost:8000/v1/content/tasks
+GET http://localhost:8000/v1/content
 Authorization: Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjUyOTA3OTUwfQ.63iDHNpHveG70Q8bAq_YCbKHQKRR1i78w5OfGrlCtiQ
 
 ###

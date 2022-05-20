@@ -10,7 +10,7 @@ router.post('/', isLoggedIn, async (req, res) => {
     const con = await mysql.createConnection(mysqlConfig);
     const [data] = await con.execute(
       `INSERT INTO tasks (user_id, description) 
-      VALUES (${mysql.escape(req.body.user_id)}, ${mysql.escape(
+      VALUES (${mysql.escape(req.user.id)}, ${mysql.escape(
         req.body.description
       )})`
     );
